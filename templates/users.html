@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Users List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/userlist.css') }}">
 </head>
 <body>
-    
+    <h1>Users List</h1>
+    <p class="main">Welcome {{ name }}</p>
+
+    {% for user in users %}
+       <div class="detail">
+        <h3>{{ user['name'] }}</h3>
+        <p>{{ user['email'] }}</p>
+        <a href="/users/{{ user['id'] }}">View Details</a>
+        </div>
+    {% endfor %}
 </body>
 </html>

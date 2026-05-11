@@ -1,0 +1,44 @@
+*{
+    padding: 0;
+    margin: 0;
+  
+}
+.head{
+    text-align:left;
+    padding: 20px;
+}
+body{
+     height: 100vh;
+    align-items: center;
+    text-align: center;
+}
+.sign {
+    text-align: center;
+    justify-content: center;
+    padding: 20px;
+    width: 60vh;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    display: flex;
+    gap: 15px;
+}
+.sign input[type="text"],
+.sign input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+.sign input[type="submit"] {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}

@@ -67,6 +67,28 @@ def user(id):
     ).fetchone()
     return render_template('user.html',user = user_details)
 
+@app.route('/edit/<int:id>')
+def edituser(id):
+    print(id)
+    conn = get_db_connection()
+    user_details = conn.execute(
+        'SELECT * FROM users WHERE id = ?',(id,)
+    ).fetchone()
+    return render_template('edit.html',user = user_details)
+
+@app.route('/update/<int:id>',methods = ['POST'])
+def edit_user(id):
+    name = request.form['name']
+    email = request.form['email']
+    
+    conn = get_db_connection()
+    conn.execute("""
+        UPDATE
+    
+    """)
+
+
+
 
 
 if __name__=='__main__':

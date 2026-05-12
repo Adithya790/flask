@@ -13,6 +13,7 @@
         <h3>{{ user['name'] }}</h3>
         <p>{{ user['email'] }}</p>
         <a href="/users/{{ user['id'] }}">View Details</a>
+        <a href="/edit/{{user.id}}">edit</a>
         </div>
     {% endfor %}
 </body>

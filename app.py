@@ -83,9 +83,26 @@ def edit_user(id):
     
     conn = get_db_connection()
     conn.execute("""
-        UPDATE
+        UPDATE users
+        SET name = ? ,email =?
+        WHERE id =? 
     
-    """)
+    """,(name,email,id))
+    conn.commit()
+    conn.close()
+    return redirect("/users")
+
+@app.route('/delete/<int:id>')
+def deleteuser(id):
+    conn = get_db_connection()
+    conn.execute("""
+        DELETE FROM users WHERE id =? 
+    
+    """,(id,))
+    conn.commit()
+    conn.close()
+    return redirect("/users")
+
 
 
 

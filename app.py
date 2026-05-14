@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request,redirect
+from flask import Flask, render_template, request,redirect,send_from_directory
 import sqlite3
+import os
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = 'folder'
 def get_db_connection():
     conn = sqlite3.connect('database.db')
     conn.row_factory = sqlite3.Row
@@ -22,7 +24,7 @@ create_table()
 
 @app.route('/')
 def home():
-    #logic
+    
     return render_template('index.html')
 
 @app.route('/about')
@@ -103,9 +105,17 @@ def deleteuser(id):
     conn.close()
     return redirect("/users")
 
+@app.route('/upload',methods = ['POST'])
+def upload_file():
+    file = request.files['file']
+    print(file.filename)
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'],file.filename))
+    return "uploaded"
 
 
-
+@app.route('/view')
+def view_image(): 
+    return send_from_directory(app.config['UPLOAD_FOLDER'],'halooo.jpg')
 
 
 if __name__=='__main__':
